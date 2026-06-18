@@ -67,7 +67,7 @@ ALLOWED_ORIGINS = [
 # Railway preview URLs change per deploy; regex keeps CORS working without listing every hostname.
 _railway_cors_regex = os.environ.get(
     "CORS_ORIGIN_REGEX",
-    r"https://([a-zA-Z0-9-]+\.)*railway\.app|https://([a-zA-Z0-9-]+\.)*up\.railway\.app",
+    r"https://([a-zA-Z0-9-]+\.)*railway\.app|https://([a-zA-Z0-9-]+\.)*up\.railway\.app|https://([a-zA-Z0-9-]+\.)*vercel\.app",
 )
 
 app.add_middleware(
