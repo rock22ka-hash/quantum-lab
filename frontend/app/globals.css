@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f5f3ff;
+  --foreground: #0f0a1e;
+  --card: #ffffff;
+  --card-border: rgba(109, 40, 217, 0.10);
+  --primary: #7c3aed;
+  --primary-glow: rgba(124, 58, 237, 0.35);
+  --accent: #06b6d4;
+  --accent-glow: rgba(6, 182, 212, 0.35);
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #eaffea;
+  --card: #051005;
+  --card-border: rgba(34, 197, 94, 0.2);
+  --primary: #22c55e;
+  --primary-glow: rgba(34, 197, 94, 0.4);
+  --accent: #4ade80;
+  --accent-glow: rgba(74, 222, 128, 0.4);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+}
+
+/* ---- Quantum animations ---- */
+
+@keyframes quantum-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-12px) rotate(1.5deg); }
+  66%       { transform: translateY(-6px) rotate(-1deg); }
+}
+
+@keyframes quantum-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%      { transform: translate(-3%, 5%) scale(1.04); border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%      { transform: translate(4%, -4%) scale(1.07); border-radius: 50% 40% 60% 30% / 40% 50% 60% 50%; }
+  75%      { transform: translate(-2%, -6%) scale(1.03); border-radius: 40% 60% 30% 70% / 60% 40% 70% 30%; }
+}
+
+@keyframes quantum-blob2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  50%      { transform: translate(5%, -4%) scale(1.06) rotate(6deg); border-radius: 70% 30% 40% 60% / 50% 40% 60% 40%; }
+}
+
+@keyframes quantum-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50%      { transform: scale(1.18); opacity: 0.9; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px 0px var(--primary-glow); }
+  50%      { box-shadow: 0 0 40px 8px var(--primary-glow); }
+}
+
+@keyframes message-in-right {
+  from { opacity: 0; transform: translateX(20px) scale(0.95); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes message-in-left {
+  from { opacity: 0; transform: translateX(-20px) scale(0.95); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes typing-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30%           { transform: translateY(-6px); opacity: 1; }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(28px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(28px) rotate(-360deg); }
+}
+
+@keyframes scan-line {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* ---- Utility classes ---- */
+
+.animate-spin-slow       { animation: spin-slow 8s linear infinite; }
+.animate-spin-reverse    { animation: spin-reverse 12s linear infinite; }
+.animate-quantum-float   { animation: quantum-float 6s ease-in-out infinite; }
+.animate-quantum-blob    { animation: quantum-blob 18s ease-in-out infinite; }
+.animate-quantum-blob2   { animation: quantum-blob2 22s ease-in-out infinite; }
+.animate-glow-pulse      { animation: glow-pulse 3s ease-in-out infinite; }
+.animate-message-right   { animation: message-in-right 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.animate-message-left    { animation: message-in-left 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.animate-shimmer         { animation: shimmer 3s linear infinite; background-size: 200% auto; }
+
+/* ---- Scrollbars ---- */
+
+.custom-scrollbar::-webkit-scrollbar       { width: 5px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.18);
+  border-radius: 4px;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.25);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover      { background: rgba(124, 58, 237, 0.35); }
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.5); }
+
+.scrollbar-hide                    { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ---- Selection ---- */
+::selection      { background: rgba(124, 58, 237, 0.25); }
+.dark ::selection { background: rgba(167, 139, 250, 0.3); }
+
+/* ---- KaTeX ---- */
+.katex { color: inherit; }
+
+/* ---- Typing indicator ---- */
+.typing-dot:nth-child(1) { animation: typing-dot 1.2s 0s infinite; }
+.typing-dot:nth-child(2) { animation: typing-dot 1.2s 0.2s infinite; }
+.typing-dot:nth-child(3) { animation: typing-dot 1.2s 0.4s infinite; }
+
+/* ---- Glass card ---- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--card-border);
+}
+.dark .glass-card {
+  background: rgba(13, 13, 38, 0.75);
+}
+
+/* ---- Gradient text ---- */
+.gradient-text {
+  background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dark .gradient-text {
+  background: linear-gradient(135deg, #22c55e 0%, #4ade80 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ---- Chat message bubbles ---- */
+.msg-user {
+  animation: message-in-right 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.msg-ai {
+  animation: message-in-left 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ---- Prose customization ---- */
+.prose-quantum {
+  --tw-prose-body: #1f1a3d;
+  --tw-prose-headings: #0f0a1e;
+  --tw-prose-code: #7c3aed;
+  --tw-prose-pre-bg: #1e1b4b;
+}
+.dark .prose-quantum {
+  --tw-prose-body: #eaffea;
+  --tw-prose-headings: #ffffff;
+  --tw-prose-code: #4ade80;
+  --tw-prose-pre-bg: #051005;
+}
+
+/* ---- Terminal code block ---- */
+.terminal-block {
+  background: #0d0d26;
+  color: #22d3ee;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  border: 1px solid rgba(34, 211, 238, 0.15);
+}
+
+/* ---- Neon border ---- */
+.neon-border-violet {
+  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.4), 0 0 16px rgba(124, 58, 237, 0.15);
+}
+.neon-border-cyan {
+  box-shadow: 0 0 0 1px rgba(6, 182, 212, 0.4), 0 0 16px rgba(6, 182, 212, 0.15);
+}
