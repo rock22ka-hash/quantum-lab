@@ -45,6 +45,14 @@ app = FastAPI(
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
+@app.middleware("http")
+async def rewrite_vercel_path(request: Request, call_next):
+    # Vercel experimentalServices might pass the /_backend prefix to the function.
+    # We strip it here so FastAPI can match the underlying routes (e.g., /health).
+    if os.environ.get("VERCEL") and request.scope.get("path", "").startswith("/_backend"):
+        request.scope["path"] = request.scope["path"][len("/_backend"):]
+    return await call_next(request)
+
 # ---------------------------------------------------------------------------
 # CORS — restrict to known origins in production
 # ---------------------------------------------------------------------------
