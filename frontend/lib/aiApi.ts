@@ -8,7 +8,9 @@ import { normalizeBackendOrigin } from '@/lib/backendUrl';
  */
 function createAiClient(): AxiosInstance {
     const raw = process.env.NEXT_PUBLIC_API_URL;
-    const base = raw && raw.trim().length > 0 ? normalizeBackendOrigin(raw) : '';
+    const base = raw && raw.trim().length > 0 
+        ? normalizeBackendOrigin(raw) 
+        : (process.env.NEXT_PUBLIC_VERCEL_ENV ? '/_backend' : '');
     return axios.create({
         baseURL: base,
         timeout: 120_000,

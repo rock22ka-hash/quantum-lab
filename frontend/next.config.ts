@@ -4,13 +4,21 @@ import type { NextConfig } from "next";
 function fastApiOrigin(): string {
     const raw =
         process.env.BACKEND_PROXY_URL ||
-        process.env.NEXT_PUBLIC_API_URL ||
-        "http://127.0.0.1:8000";
-    let u = raw.trim().replace(/\/+$/, "");
-    if (/\/api$/i.test(u)) {
-        u = u.replace(/\/api$/i, "");
+        process.env.NEXT_PUBLIC_API_URL;
+        
+    if (raw) {
+        let u = raw.trim().replace(/\/+$/, "");
+        if (/\/api$/i.test(u)) {
+            u = u.replace(/\/api$/i, "");
+        }
+        return u;
     }
-    return u;
+    
+    if (process.env.VERCEL) {
+        return "/_backend";
+    }
+    
+    return "http://127.0.0.1:8000";
 }
 
 const nextConfig: NextConfig = {
