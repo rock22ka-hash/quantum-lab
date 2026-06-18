@@ -34,12 +34,13 @@ limiter = Limiter(key_func=get_remote_address)
 # App
 # ---------------------------------------------------------------------------
 # Disable Swagger docs in production — no need to expose API schema publicly
-_is_production = bool(os.environ.get("RAILWAY_ENVIRONMENT"))
+_is_production = bool(os.environ.get("RAILWAY_ENVIRONMENT") or os.environ.get("VERCEL"))
 app = FastAPI(
     title="Quantum Computing Expert API",
     version="2.1.0",
     docs_url=None if _is_production else "/docs",
     redoc_url=None,
+    root_path="/_backend" if os.environ.get("VERCEL") else "",
 )
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
