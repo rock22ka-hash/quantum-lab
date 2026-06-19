@@ -138,7 +138,31 @@ export default function Sidebar({ collapsed, onMouseEnter, onMouseLeave, backend
             <div className="px-2 pb-2" style={{ borderTop: '1px solid rgba(139,92,246,0.08)' }}>
 
 
-                {/* Profile removed as requested */}
+                {/* Profile */}
+                <AnimatePresence>
+                    {!collapsed && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="overflow-hidden"
+                        >
+                            <div className="rounded-xl border px-3 py-2.5 mt-1"
+                                style={{ background: 'rgba(124,58,237,0.06)', borderColor: 'rgba(124,58,237,0.15)' }}>
+                                <p className="text-[9px] font-mono uppercase tracking-widest mb-1.5"
+                                    style={{ color: 'rgba(139,92,246,0.5)' }}>{"// built by"}</p>
+                                <a 
+                                    href="https://ada-lovelace.in/" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="block text-[11px] font-bold text-white transition-colors hover:text-purple-400"
+                                >
+                                    Ada Lovelace Software Private Limited
+                                </a>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </motion.aside>
     );
