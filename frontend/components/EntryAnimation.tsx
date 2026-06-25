@@ -42,7 +42,7 @@ export default function EntryAnimation() {
                         className="relative z-10 text-center"
                     >
                         <h1 className="text-5xl md:text-7xl font-black uppercase tracking-[0.3em] text-white" style={{ textShadow: '0 0 30px #22c55e, 0 0 60px #16a34a' }}>
-                            Q-Matrix
+                            QUANTIX
                         </h1>
                         <motion.div 
                             initial={{ width: 0, left: '50%' }}

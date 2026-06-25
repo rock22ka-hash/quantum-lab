@@ -69,7 +69,7 @@ export default function AiHelperPage() {
         {
             role: 'assistant',
             content:
-                '👋 Hi! I\'m your **Q-Matrix AI** tutor powered by Llama 3.3 70B.\n\nI can help you with:\n- **Quantum circuits** and gate operations\n- **VQE** and variational algorithms\n- **Quantum ML** concepts (kernels, barren plateaus)\n- **Bloch sphere** state visualization\n- Reading measurement histograms\n\nAsk me anything, or pick a suggestion below!',
+                '👋 Hi! I\'m your **QUANTIX AI** tutor powered by Llama 3.3 70B.\n\nI can help you with:\n- **Quantum circuits** and gate operations\n- **VQE** and variational algorithms\n- **Quantum ML** concepts (kernels, barren plateaus)\n- **Bloch sphere** state visualization\n- Reading measurement histograms\n\nAsk me anything, or pick a suggestion below!',
         },
     ]);
     const [input, setInput] = useState('');
@@ -141,7 +141,7 @@ export default function AiHelperPage() {
                         <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-[var(--card)] bg-emerald-400" />
                     </div>
                     <div>
-                        <p className="text-sm font-bold" style={{ color: 'var(--foreground)' }}>Q-Matrix AI</p>
+                        <p className="text-sm font-bold" style={{ color: 'var(--foreground)' }}>QUANTIX AI</p>
                         <p className="text-[10px] font-medium" style={{ color: '#22c55e', opacity: 0.8 }}>Llama 3.3 70B • Quantum Expert</p>
                     </div>
                 </div>
@@ -282,7 +282,7 @@ export default function AiHelperPage() {
                     </button>
                 </div>
                 <p className="mt-2 text-center text-[9px] font-medium uppercase tracking-widest" style={{ color: 'var(--foreground)', opacity: 0.3 }}>
-                    Q-Matrix AI • Llama 3.3 70B on Groq
+                    QUANTIX AI • Llama 3.3 70B on Groq
                 </p>
             </div>
         </div>

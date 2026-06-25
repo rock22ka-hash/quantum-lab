@@ -104,7 +104,7 @@ export default function Sidebar({ collapsed, onMouseEnter, onMouseLeave, backend
                             className="ml-3 overflow-hidden whitespace-nowrap"
                         >
                             <span className="text-sm font-bold tracking-tight text-white">
-                                Q-<span style={{ color: '#22c55e' }}>Matrix</span>
+                                QUANTIX
                             </span>
                         </motion.div>
                     )}

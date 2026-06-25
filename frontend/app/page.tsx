@@ -124,18 +124,18 @@ export default function HomePage() {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: 0.1 }}
-                                        className="block"
+                                        className="block text-transparent bg-clip-text"
+                                        style={{ backgroundImage: 'linear-gradient(to right, #4ade80, #16a34a)' }}
                                     >
-                                        HACK THE
+                                        QUANTIX
                                     </motion.span>
                                     <motion.span 
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: 0.3 }}
-                                        className="block text-transparent bg-clip-text"
-                                        style={{ backgroundImage: 'linear-gradient(to right, #4ade80, #16a34a)' }}
+                                        className="block text-2xl sm:text-4xl mt-4 text-white font-semibold"
                                     >
-                                        QUANTUM REALM.
+                                        Enterprise Quantum Circuit Generation Platform
                                     </motion.span>
                                 </h1>
                             )}
@@ -147,7 +147,7 @@ export default function HomePage() {
                                 className="max-w-2xl text-lg font-mono leading-relaxed" 
                                 style={{ color: 'rgba(var(--foreground), 0.6)', opacity: 0.7 }}
                             >
-                                {`$> Accessing the Q-Matrix...`}
+                                {`$> Accessing QUANTIX...`}
                                 <br/>
                                 {`$> Simulating qubits in real-time...`}
                                 <br/>

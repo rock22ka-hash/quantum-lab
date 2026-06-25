@@ -11,8 +11,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Q-Matrix — Quantum Computing Experiments",
-  description: "A professional Quantum Computing laboratory for experiments and learning. Run quantum simulations including QRNG, VQE, Grover's algorithm, and more.",
+  title: "QUANTIX — Enterprise Quantum Circuit Generation Platform",
+  description: "Enterprise Quantum Circuit Generation Platform",
 };
 
 export default function RootLayout({
