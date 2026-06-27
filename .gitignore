@@ -5,3 +5,4 @@ backend/__pycache__/
 .env
 .env.local
 .DS_Store
+backend/test_install/

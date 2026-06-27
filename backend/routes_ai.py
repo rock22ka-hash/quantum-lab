@@ -257,6 +257,7 @@ async def _call_openai_compatible(
     oai = os.environ.get("OPENAI_API_KEY")
     
     if user_api_key:
+        user_api_key = user_api_key.strip()
         if user_api_key.startswith("sk-"):
             url = "https://api.openai.com/v1/chat/completions"
             key = user_api_key
@@ -266,11 +267,12 @@ async def _call_openai_compatible(
             key = user_api_key
             model = "llama-3.3-70b-versatile"
     elif groq_creds:
-        url = os.environ.get("GROQ_BASE_URL", "https://api.groq.com/openai/v1") + "/chat/completions"
+        url = os.environ.get("GROQ_BASE_URL", "https://api.groq.com/openai/v1").rstrip("/") + "/chat/completions"
         key, model = groq_creds
+        key = key.strip()
     elif oai:
-        url = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1") + "/chat/completions"
-        key = oai
+        url = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/") + "/chat/completions"
+        key = oai.strip()
         model = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
     else:
         return ""
@@ -295,8 +297,9 @@ async def _call_openai_compatible(
         logger.error("LLM API returned %s: %s", e.response.status_code, e.response.text[:500])
         raise HTTPException(status_code=e.response.status_code, detail=f"LLM API Error: {e.response.text[:100]}")
     except httpx.RequestError as e:
-        logger.error("LLM request failed: %s", e)
-        raise HTTPException(status_code=502, detail=f"LLM request failed: {str(e)}")
+        logger.error("LLM request failed: %r - %s", e, str(e))
+        raise HTTPException(status_code=502, detail=f"LLM request failed: {repr(e)} {str(e)}")
+
 
 
 def _extract_json_block(text: str) -> dict[str, Any] | None:
